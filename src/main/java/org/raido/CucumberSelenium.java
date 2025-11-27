@@ -4,28 +4,47 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
-import java.util.List;
+
 
 public class CucumberSelenium {
+    private static final String testEmail = "1234Aa@askd.com";
+    private static final String testPassword = "1234Aa!!";
+
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
+        SoftAssert softAssert = new SoftAssert();
 
-        driver.get("https://habr.com/en/companies/otus/articles/778376/");
+        driver.get("https://test-mrn.astondevs.ru");
+        WaitUtils.waitForPageLoad(driver, 5);
 
-        driver.getTitle();
+        By buttonLKLocator = By.xpath("//a[.//text()='Войти']");
+        WaitUtils.waitForElementVisibility(driver, buttonLKLocator, 10);
+        WebElement buttonLK = driver.findElement(buttonLKLocator);
+        buttonLK.click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
+        WaitUtils.waitForPageLoad(driver, 5);
 
-        WebElement parentEl = driver.findElement(By.className("tm-company-basic-info"));
+        By inputEmailLocator = By.xpath("//input[@id='E-mail']");
+        WebElement inputEmailField = driver.findElement(inputEmailLocator);
+        inputEmailField.sendKeys(testEmail);
 
-        List<WebElement> textMessages = parentEl.findElements(By.className("tm-description-list"));
+        By inputPasswordLocator = By.xpath("//input[@name='password']");
+        WebElement inputPasswordField = driver.findElement(inputPasswordLocator);
+        inputPasswordField.sendKeys(testPassword);
 
-        for (WebElement element : textMessages) {
-            System.out.println("Paragraph text:" + element.getText());
-        }
+        By buttonEnterLocator = By.xpath("//button[.//text()='Продолжить']");
+        WebElement buttonEnter = driver.findElement(buttonEnterLocator);
+        buttonEnter.click();
 
+        WaitUtils.waitForPageLoad(driver, 5);
+
+        String actualUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://test-mrn.astondevs.ru";
+        softAssert.assertEquals(actualUrl, expectedUrl, "После входа URL должен вести на главную.");
+
+        softAssert.assertAll();
         driver.quit();
     }
 }
