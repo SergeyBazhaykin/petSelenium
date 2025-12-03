@@ -1,5 +1,6 @@
 package org.raido.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.raido.utils.WaitUtils;
@@ -17,6 +18,7 @@ public class LoginPage {
         this.waitTimeInSeconds = 5;
     }
 
+    @Step("Авторизация с логином: {email} и паролем: {password}")
     public void login(String email, String password) {
         WaitUtils.waitForElementVisibility(driver, inputEmailLocator, waitTimeInSeconds);
 
@@ -26,6 +28,7 @@ public class LoginPage {
         driver.findElement(buttonEnterLocator).click();
     }
 
+    @Step("Получение текущего адреса страницы")
     public String getCurrentUrl() {
         WaitUtils.waitForPageLoad(driver, waitTimeInSeconds);
         return driver.getCurrentUrl();

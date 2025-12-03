@@ -7,7 +7,10 @@ import org.raido.utils.DataReader;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import io.qameta.allure.Story;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +25,9 @@ public class LoginTest extends BaseTest {
         }
         return result;
     }
-
+    @Story("Проверка авторизации на сайте")
+    @Owner("SergeyB")
+    @Description("Попытка входа на сайт с тестовыми данными")
     @Test(description = "Проверка успешной авторизации на сайте", dataProvider = "loginData")
     public void testLoginScenarios(Map<String, String> testCase) {
         SoftAssert softAssert = new SoftAssert();

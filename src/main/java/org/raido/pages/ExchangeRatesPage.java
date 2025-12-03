@@ -1,5 +1,6 @@
 package org.raido.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,16 +20,18 @@ public class ExchangeRatesPage {
         this.waitTimeInSeconds = 5;
     }
 
+    @Step("Получение значений курсов валют")
     public List<ExchangeRateCard> getExchangeRateCards() {
         WaitUtils.waitForElementVisibility(driver, exchangeCardLocator, waitTimeInSeconds);
 
         List<WebElement> cardElements = driver.findElements(exchangeCardLocator);
 
         return cardElements.stream()
-                .map(ExchangeRateCard::new) // Создаем объект внутреннего класса
+                .map(ExchangeRateCard::new)
                 .collect(Collectors.toList());
     }
 
+    @Step("Получение текущего адреса страницы")
     public String getCurrentUrl() {
         WaitUtils.waitForPageLoad(driver, waitTimeInSeconds);
         return driver.getCurrentUrl();

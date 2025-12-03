@@ -1,5 +1,8 @@
 package org.raido.tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.raido.BaseTest;
 import org.raido.pages.ExchangeRatesPage;
 import org.raido.pages.MainPage;
@@ -9,6 +12,9 @@ import java.util.List;
 
 public class SanityExchangeRatesTest extends BaseTest {
 
+    @Story("Проверка корректности курсов валют")
+    @Owner("SergeyB")
+    @Description("Сравнение цены покупки и цены продажи валют")
     @Test(description = "Проверка корректности курсов валют")
     public static void compareBuyAndSaleRatesInCards() {
         SoftAssert softAssert = new SoftAssert();

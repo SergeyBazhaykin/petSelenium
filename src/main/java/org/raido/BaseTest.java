@@ -2,6 +2,8 @@ package org.raido;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.raido.utils.AllureUtils;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
@@ -22,7 +24,10 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            AllureUtils.takeScreenshot(driver);
+        }
         if (driver != null) {
             driver.quit();
         }
