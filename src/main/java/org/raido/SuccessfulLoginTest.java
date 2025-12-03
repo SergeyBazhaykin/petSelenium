@@ -11,10 +11,11 @@ public class SuccessfulLoginTest extends BaseTest {
     public static void testSuccessfulLogin() {
         SoftAssert softAssert = new SoftAssert();
         MainPage mainPage = new MainPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         mainPage.clickLoginButtonOnMainPage();
 
-        mainPage.login(testEmail, testPassword);
+        loginPage.login(testEmail, testPassword);
 
         String actualUrl = mainPage.getCurrentUrl();
         String expectedUrl = "https://test-mrn.astondevs.ru/";
