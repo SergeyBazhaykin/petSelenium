@@ -29,11 +29,5 @@ public class WaitUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-
-    public void waitForPageLoadComplete(WebDriver driver, int timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        wait.until(webDriver -> Objects.equals(((JavascriptExecutor) webDriver).executeScript("return document.readyState"), "complete")
-        );
-    }
 }
 
