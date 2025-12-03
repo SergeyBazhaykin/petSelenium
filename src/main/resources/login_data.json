@@ -1,0 +1,16 @@
+[
+  {
+    "description": "Успешный логин",
+    "email": "1234Aa@askd.com",
+    "password": "1234Aa!!",
+    "expectedUrl": "https://test-mrn.astondevs.ru/",
+    "isSuccess": true
+  },
+  {
+    "description": "Неверный пароль",
+    "email": "1234Aa@askd.com",
+    "password": "wrongPassword",
+    "expectedUrl": "https://test-mrn.astondevs.ru/sign-up",
+    "isSuccess": false
+  }
+]

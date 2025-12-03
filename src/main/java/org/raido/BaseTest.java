@@ -17,6 +17,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         driver.get("https://test-mrn.astondevs.ru");
+
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
