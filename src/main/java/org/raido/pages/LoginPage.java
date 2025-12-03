@@ -27,6 +27,7 @@ public class LoginPage {
     }
 
     public String getCurrentUrl() {
+        WaitUtils.waitForPageLoad(driver, waitTimeInSeconds);
         return driver.getCurrentUrl();
     }
 
