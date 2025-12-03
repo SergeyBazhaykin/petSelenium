@@ -6,13 +6,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class MainPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     private final By buttonLKLocator = By.xpath("//a[.//text()='Войти']");
-    private final By inputEmailLocator = By.xpath("//input[@id='E-mail']");
-    private final By inputPasswordLocator = By.xpath("//input[@name='password']");
-    private final By buttonEnterLocator = By.xpath("//button[.//text()='Продолжить']");
+    private final By buttonExchangeRatesLocator = By.xpath("//a[.//text()='Курсы валют']");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -24,13 +22,9 @@ public class MainPage {
         driver.findElement(buttonLKLocator).click();
     }
 
-    public void login(String email, String password) {
-        wait.until(d -> driver.findElement(inputEmailLocator).isDisplayed());
-
-        driver.findElement(inputEmailLocator).sendKeys(email);
-        driver.findElement(inputPasswordLocator).sendKeys(password);
-
-        driver.findElement(buttonEnterLocator).click();
+    public void clickExchangeRatesButtonOnMainPage() {
+        wait.until(d -> driver.findElement(buttonExchangeRatesLocator).isDisplayed());
+        driver.findElement(buttonExchangeRatesLocator).click();
     }
 
     public String getCurrentUrl() {
