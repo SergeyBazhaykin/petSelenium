@@ -1,4 +1,4 @@
-package org.raido;
+package org.raido.utils;
 
 import java.util.Objects;
 import java.time.Duration;

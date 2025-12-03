@@ -1,7 +1,8 @@
-package org.raido;
+package org.raido.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.raido.utils.WaitUtils;
 
 public class LoginPage {
     private final WebDriver driver;

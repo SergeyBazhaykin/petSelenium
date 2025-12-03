@@ -1,8 +1,9 @@
-package org.raido;
+package org.raido.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.raido.utils.WaitUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

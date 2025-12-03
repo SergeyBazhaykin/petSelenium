@@ -1,5 +1,8 @@
-package org.raido;
+package org.raido.tests;
 
+import org.raido.BaseTest;
+import org.raido.pages.ExchangeRatesPage;
+import org.raido.pages.MainPage;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import java.util.List;

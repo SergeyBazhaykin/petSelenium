@@ -1,5 +1,8 @@
-package org.raido;
+package org.raido.tests;
 
+import org.raido.BaseTest;
+import org.raido.pages.LoginPage;
+import org.raido.pages.MainPage;
 import org.raido.utils.DataReader;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
