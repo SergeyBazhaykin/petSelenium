@@ -3,5 +3,15 @@
     "description": "Сообщение об ошибке (Неверный пароль или e-mail) на странице авторизации",
     "errorMessage": "Неверный пароль или e-mail",
     "locator": "loginPageResult"
+  },
+  {
+    "description": "Сообщение об ошибке (слишком длинный email) на странице регистрации",
+    "errorMessage": "email must be at most 50 characters",
+    "locator": "registerPageTooLongEmail"
+  },
+  {
+    "description": "Сообщение об ошибке (некорректный email) на странице регистрации",
+    "errorMessage": "Некорректный адрес электронной почты",
+    "locator": "registerPageIncorrectEmail"
   }
 ]

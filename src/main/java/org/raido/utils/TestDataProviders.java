@@ -28,4 +28,15 @@ public class TestDataProviders {
         }
         return result;
     }
+
+    @DataProvider(name = "emails")
+    public Object[][] getEmails() {
+        List<Map<String, String>> data = DataReader.readJsonData("emails.json");
+        Object[][] result = new Object[data.size()][1];
+
+        for (int i = 0; i < data.size(); i++) {
+            result[i][0] = data.get(i);
+        }
+        return result;
+    }
 }

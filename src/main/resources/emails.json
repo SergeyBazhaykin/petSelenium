@@ -1,0 +1,42 @@
+[
+  {
+    "description": "e-mail адрес в котором число символов до @ больше 30",
+    "email": "1234567890123456789012345678901234567890@mail.ru",
+    "errorLocator": "registerPageTooLongEmail"
+  },
+  {
+    "description": "очень длинный e-mail адрес",
+    "email": "12345678901234567890012345678900123456789012345678901234567890@mail.ru",
+    "errorLocator": "registerPageTooLongEmail"
+  },
+  {
+    "description": "e-mail адрес в котором стоит символ точки (.) после @",
+    "email": "asdfqf@.mail.ru",
+    "errorLocator": "registerPageIncorrectEmail"
+  },
+  {
+    "description": "e-mail адрес, начинающий с символа пробела",
+    "email": " asddsa@mail.ru",
+    "errorLocator": "registerPageIncorrectEmail"
+  },
+  {
+    "description": "e-mail адрес, содержащий некорректные символы (&)",
+    "email": "asdasdaa&aa@bk.ru",
+    "errorLocator": "registerPageIncorrectEmail"
+  },
+  {
+    "description": "e-mail адрес, содержащий некорректные символы (!)",
+    "email": "asdas!aa@bk.ru",
+    "errorLocator": "registerPageIncorrectEmail"
+  },
+  {
+    "description": "e-mail адрес, содержащий некорректные символы (#)",
+    "email": "asdaa#aa@bk.ru",
+    "errorLocator": "registerPageIncorrectEmail"
+  },
+  {
+    "description": "e-mail адрес, содержащий некорректные символы (Ы)",
+    "email": "asdaaЫaa@bk.ru",
+    "errorLocator": "registerPageIncorrectEmail"
+  }
+]
