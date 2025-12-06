@@ -10,7 +10,7 @@
     "description": "Неверный пароль",
     "email": "1234Aa@askd.com",
     "password": "wrongPassword",
-    "expectedUrl": "https://test-mrn.astondevs.ru/sign-up",
+    "expectedUrl": "https://test-mrn.astondevs.ru/sign-in",
     "isSuccess": false
   }
 ]

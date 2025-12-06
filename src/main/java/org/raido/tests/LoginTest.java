@@ -15,7 +15,8 @@ public class LoginTest extends BaseTest {
     @Story("Проверка авторизации на сайте")
     @Owner("SergeyB")
     @Description("Попытка входа на сайт с тестовыми данными")
-    @Test(description = "Проверка успешной авторизации на сайте", dataProvider = "loginData", dataProviderClass = TestDataProviders.class)
+    @Test(description = "Проверка авторизации на сайте",
+            dataProvider = "loginData", dataProviderClass = TestDataProviders.class)
     public void testLoginScenarios(Map<String, String> testCase) {
         SoftAssert softAssert = new SoftAssert();
         MainPage mainPage = new MainPage(driver);
@@ -33,10 +34,13 @@ public class LoginTest extends BaseTest {
         String actualUrl = loginPage.getCurrentUrl();
 
         softAssert.assertEquals(actualUrl, expectedUrl,
-                "После логина URL не соответствует ожидаемому для сценария: " + testCase.get("description"));
+                "После логина URL не соответствует ожидаемому для сценария: "
+                        + testCase.get("description"));
 
         if (!isSuccess) {
-            softAssert.assertTrue(loginPage.isErrorMessageDisplayed(), "Нет индикации ошибки на странице логина.");
+            softAssert.assertTrue(loginPage.isErrorMessageDisplayed(),
+                    "Нет индикации ошибки на странице логина для сценария: "
+                            + testCase.get("description"));
         }
 
         softAssert.assertAll();

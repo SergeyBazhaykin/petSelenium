@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class TestDataProviders {
     @DataProvider(name = "loginData")
-    public Object[][] getLoginData() {
+    public Object[][] getLoginDataCorrect() {
         List<Map<String, String>> data = DataReader.readJsonData("login_data.json");
         Object[][] result = new Object[data.size()][1];
 
@@ -16,6 +16,7 @@ public class TestDataProviders {
         }
         return result;
     }
+
 
     @DataProvider(name = "errorMessages")
     public Object[][] getErrorMessages() {

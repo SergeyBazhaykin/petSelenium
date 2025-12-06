@@ -16,7 +16,8 @@ public class WaitUtils {
         wait.until((ExpectedCondition<Boolean>) webDriver ->
         {
             assert webDriver != null;
-            return Objects.equals(((JavascriptExecutor) webDriver).executeScript("return document.readyState"), "complete");
+            return Objects.equals(((JavascriptExecutor) webDriver).executeScript("return document.readyState"),
+                    "complete");
         });
     }
 
