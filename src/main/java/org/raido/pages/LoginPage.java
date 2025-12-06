@@ -3,7 +3,10 @@ package org.raido.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.raido.utils.DataReader;
 import org.raido.utils.WaitUtils;
+
+import java.util.Map;
 
 public class LoginPage {
     private final WebDriver driver;
@@ -12,6 +15,7 @@ public class LoginPage {
     private final By inputEmailLocator = By.xpath("//input[@id='E-mail']");
     private final By inputPasswordLocator = By.xpath("//input[@name='password']");
     private final By buttonEnterLocator = By.xpath("//button[.//text()='Продолжить']");
+    private final By errorMessageLocator = By.xpath("//span[@class='massage-error']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -34,7 +38,13 @@ public class LoginPage {
         return driver.getCurrentUrl();
     }
 
-    //public boolean isErrorMessageDisplayed() {
-//
-    //}
+    @Step("Проверка вывода сообщения об ошибке")
+    public boolean isErrorMessageDisplayed() {
+        WaitUtils.waitForElementVisibility(driver, errorMessageLocator, waitTimeInSeconds);
+
+        Map<String, String> resultData = DataReader.getObjectByLocator("error_messages.json", "loginPageResult");
+        String errorMessage = resultData.get("errorMessage");
+
+        return driver.findElement(errorMessageLocator).getText().equals(errorMessage);
+    }
 }

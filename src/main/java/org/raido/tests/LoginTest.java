@@ -3,32 +3,19 @@ package org.raido.tests;
 import org.raido.BaseTest;
 import org.raido.pages.LoginPage;
 import org.raido.pages.MainPage;
-import org.raido.utils.DataReader;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import io.qameta.allure.Story;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
-import java.util.List;
 import java.util.Map;
+import org.raido.utils.TestDataProviders;
 
 public class LoginTest extends BaseTest {
-    @DataProvider(name = "loginData")
-    public Object[][] getLoginData() {
-        List<Map<String, String>> data = DataReader.readJsonData("login_data.json");
-        Object[][] result = new Object[data.size()][1];
-
-        for (int i = 0; i < data.size(); i++) {
-            result[i][0] = data.get(i);
-        }
-        return result;
-    }
     @Story("Проверка авторизации на сайте")
     @Owner("SergeyB")
     @Description("Попытка входа на сайт с тестовыми данными")
-    @Test(description = "Проверка успешной авторизации на сайте", dataProvider = "loginData")
+    @Test(description = "Проверка успешной авторизации на сайте", dataProvider = "loginData", dataProviderClass = TestDataProviders.class)
     public void testLoginScenarios(Map<String, String> testCase) {
         SoftAssert softAssert = new SoftAssert();
         MainPage mainPage = new MainPage(driver);
@@ -49,7 +36,7 @@ public class LoginTest extends BaseTest {
                 "После логина URL не соответствует ожидаемому для сценария: " + testCase.get("description"));
 
         if (!isSuccess) {
-            //softAssert.assertTrue(loginPage.isErrorMessageDisplayed(), "Нет индикации ошибки на странице логина.");
+            softAssert.assertTrue(loginPage.isErrorMessageDisplayed(), "Нет индикации ошибки на странице логина.");
         }
 
         softAssert.assertAll();

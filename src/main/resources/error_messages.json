@@ -1,0 +1,7 @@
+[
+  {
+    "description": "Сообщение об ошибке (Неверный пароль или e-mail) на странице авторизации",
+    "errorMessage": "Неверный пароль или e-mail",
+    "locator": "loginPageResult"
+  }
+]
